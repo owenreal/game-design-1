@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ntq0rprk257"]
+
+[ext_resource type="Script" path="res://prog_93a.gd" id="1_dhbs7"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_6kijj"]
+
+[node name="Prog93a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhbs7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 63.0
+offset_right = 349.0
+offset_bottom = 138.0
+theme = ExtResource("2_6kijj")
+text = "KWH used:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="txtKWH" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 74.0
+offset_right = 615.0
+offset_bottom = 133.0
+
+[node name="lblBase" type="Label" parent="."]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 158.0
+offset_right = 474.0
+offset_bottom = 225.0
+theme = ExtResource("2_6kijj")
+text = "Base Total:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblSur" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 245.0
+offset_right = 472.0
+offset_bottom = 312.0
+theme = ExtResource("2_6kijj")
+text = "Surcharge:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblCity" type="Label" parent="."]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 332.0
+offset_right = 474.0
+offset_bottom = 399.0
+theme = ExtResource("2_6kijj")
+text = "City Tax:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblTotal" type="Label" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 436.0
+offset_right = 468.0
+offset_bottom = 503.0
+theme = ExtResource("2_6kijj")
+text = "Total:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblLate" type="Label" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 519.0
+offset_right = 464.0
+offset_bottom = 586.0
+theme = ExtResource("2_6kijj")
+text = "Late Total:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 51.0
+offset_right = 1026.0
+offset_bottom = 176.0
+theme = ExtResource("2_6kijj")
+text = "Calculate"
+
+[node name="btnShow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 258.0
+offset_right = 1051.0
+offset_bottom = 383.0
+theme = ExtResource("2_6kijj")
+text = "Clear
+"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 468.0
+offset_right = 1049.0
+offset_bottom = 593.0
+theme = ExtResource("2_6kijj")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnShow" to="." method="_on_btn_show_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
