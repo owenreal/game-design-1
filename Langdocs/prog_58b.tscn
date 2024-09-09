@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6ln5ei6rpq3"]
+
+[ext_resource type="Script" path="res://Langdocs/prog_58b.gd" id="1_kcftp"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="1_pbyhv"]
+
+[node name="Prog58b" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kcftp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 34.0
+offset_right = 758.0
+offset_bottom = 101.0
+theme = ExtResource("1_pbyhv")
+text = "Enter 3 numbers"
+
+[node name="txtA" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 132.0
+offset_right = 354.0
+offset_bottom = 226.0
+
+[node name="txtB" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 129.0
+offset_right = 652.0
+offset_bottom = 223.0
+
+[node name="txtC" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 802.0
+offset_top = 128.0
+offset_right = 931.0
+offset_bottom = 222.0
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 348.0
+offset_right = 468.0
+offset_bottom = 433.0
+theme = ExtResource("1_pbyhv")
+text = "The roots are:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lblRoots" type="Label" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 356.0
+offset_right = 817.0
+offset_bottom = 441.0
+theme = ExtResource("1_pbyhv")
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 495.0
+offset_right = 316.0
+offset_bottom = 605.0
+theme = ExtResource("1_pbyhv")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 493.0
+offset_right = 691.0
+offset_bottom = 603.0
+theme = ExtResource("1_pbyhv")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 490.0
+offset_right = 1062.0
+offset_bottom = 600.0
+theme = ExtResource("1_pbyhv")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
