@@ -55,10 +55,10 @@ vertical_alignment = 1
 
 [node name="lblRoots" type="Label" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 356.0
-offset_right = 817.0
-offset_bottom = 441.0
+offset_left = 485.0
+offset_top = 348.0
+offset_right = 806.0
+offset_bottom = 433.0
 theme = ExtResource("1_pbyhv")
 vertical_alignment = 1
 
