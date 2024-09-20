@@ -21,14 +21,24 @@ offset_bottom = 138.0
 theme = ExtResource("2_jbg08")
 text = "Enter number of eggs ordered:"
 
-[node name="lblCost" type="Label" parent="."]
+[node name="lblDozen" type="Label" parent="."]
 layout_mode = 0
 offset_left = 32.0
-offset_top = 235.0
+offset_top = 179.0
 offset_right = 702.0
-offset_bottom = 327.0
+offset_bottom = 271.0
 theme = ExtResource("2_jbg08")
 text = "Cost per dozen:"
+vertical_alignment = 1
+
+[node name="lblCost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 257.0
+offset_right = 700.0
+offset_bottom = 349.0
+theme = ExtResource("2_jbg08")
+text = "Total Cost:"
 vertical_alignment = 1
 
 [node name="txtEggs" type="LineEdit" parent="."]
