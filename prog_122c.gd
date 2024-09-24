@@ -7,7 +7,7 @@ func _on_btn_calc_pressed() -> void:
 		var line1 = str(num)
 		$ItemList.add_item(line1)
 	
-	for num in range(3, 11+1, 3):
+	for num in range(3, 11+1, 2):
 		var line2 = str(num)
 		$ItemList2.add_item(line2)
 		
@@ -15,13 +15,16 @@ func _on_btn_calc_pressed() -> void:
 		var line3 = str(num)
 		$ItemList3.add_item(line3)
 		
-	var step = 12
-	for num in range(4, 100, step):
-		var line4 = str(num)
-		step += 8
+	var times = 0
+	var addby = 12
+	var current = 4
+	while times < 5:
+		var line4 = str(current)
 		$ItemList4.add_item(line4)
-		#fix more
-
+		current = current + addby
+		addby += 8
+		times += 1
+		
 func _on_btn_clear_pressed() -> void:
 	var resets = [$ItemList, $ItemList2, $ItemList3, $ItemList4]
 	for num in resets:
