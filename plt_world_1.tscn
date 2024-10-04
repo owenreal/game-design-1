@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhoj3sedepg1r"]
+[gd_scene load_steps=8 format=3 uid="uid://dhoj3sedepg1r"]
 
 [ext_resource type="Script" path="res://plt_world_1.gd" id="1_t3pye"]
 [ext_resource type="PackedScene" uid="uid://m5lm7n3rt4s1" path="res://plt_player.tscn" id="2_x0den"]
 [ext_resource type="PackedScene" uid="uid://d01eijykwy6q5" path="res://interact.tscn" id="3_b340w"]
 [ext_resource type="PackedScene" uid="uid://b034hi40t3504" path="res://draggable.tscn" id="4_mp5xf"]
+[ext_resource type="PackedScene" uid="uid://fumn3dggrw3o" path="res://plt_enemy.tscn" id="5_cyqju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewnfa"]
 size = Vector2(219, 20)
@@ -40,3 +41,6 @@ position = Vector2(1034, 121)
 
 [node name="draggable" parent="." instance=ExtResource("4_mp5xf")]
 position = Vector2(71, 427)
+
+[node name="plt_enemy" parent="." instance=ExtResource("5_cyqju")]
+position = Vector2(154, 439)
