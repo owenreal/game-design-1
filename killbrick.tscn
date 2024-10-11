@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnnj6w3wxfp0g"]
+
+[ext_resource type="Script" path="res://sprite_2d.gd" id="1_od16f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6iug"]
+size = Vector2(132, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2a2d2"]
+
+[node name="killbrick" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g6iug")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(132, 20)
+texture = SubResource("PlaceholderTexture2D_2a2d2")
+script = ExtResource("1_od16f")
+
+[connection signal="body_entered" from="." to="CollisionShape2D/Sprite2D" method="_on_killbrick_body_entered"]

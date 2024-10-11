@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-var speed = 100
-var direction = -1
+@export var speed = 100
+var direction = 1
 
 func _ready() -> void:
 	$Timer.start()
