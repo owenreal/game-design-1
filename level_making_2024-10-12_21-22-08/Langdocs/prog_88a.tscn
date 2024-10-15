@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8160qemgq6tf"]
+
+[ext_resource type="Script" path="res://prog_88a.gd" id="1_ndv1f"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_wyk2f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3q3rh"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_cl55b"]
+font_size = 38
+
+[node name="Prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ndv1f")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 375.0
+offset_bottom = 92.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 777.0
+offset_right = 1152.0
+offset_bottom = 92.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 103.0
+offset_right = 1139.0
+offset_bottom = 541.0
+theme = ExtResource("2_wyk2f")
+text = "Sum:
+Difference:
+Product:
+Average:
+Abs. Distance:
+Max:
+Min:"
+label_settings = SubResource("LabelSettings_3q3rh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 551.0
+offset_right = 247.0
+offset_bottom = 632.0
+theme = ExtResource("2_wyk2f")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 552.0
+offset_right = 682.0
+offset_bottom = 633.0
+theme = ExtResource("2_wyk2f")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 905.0
+offset_top = 549.0
+offset_right = 1129.0
+offset_bottom = 630.0
+theme = ExtResource("2_wyk2f")
+text = "Exit"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 17.0
+offset_right = 730.0
+offset_bottom = 70.0
+text = "Enter 2 numbers"
+label_settings = SubResource("LabelSettings_cl55b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

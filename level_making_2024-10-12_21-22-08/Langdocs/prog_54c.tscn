@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt063agcpiw1s"]
+
+[ext_resource type="Script" path="res://prog_54c.gd" id="1_j4wb4"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_plxl1"]
+
+[node name="Prog54c" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j4wb4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 72.0
+offset_right = 501.0
+offset_bottom = 189.0
+theme = ExtResource("2_plxl1")
+text = "Radius:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="txtRadius" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 107.0
+offset_right = 839.0
+offset_bottom = 164.0
+
+[node name="lblArea" type="Label" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 233.0
+offset_right = 635.0
+offset_bottom = 303.0
+theme = ExtResource("2_plxl1")
+text = "Area:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblCir" type="Label" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 324.0
+offset_right = 729.0
+offset_bottom = 394.0
+theme = ExtResource("2_plxl1")
+text = "Circumference:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 489.0
+offset_right = 313.0
+offset_bottom = 593.0
+theme = ExtResource("2_plxl1")
+text = "Calculate
+"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 485.0
+offset_right = 670.0
+offset_bottom = 589.0
+theme = ExtResource("2_plxl1")
+text = "Clear
+"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 833.0
+offset_top = 483.0
+offset_right = 1055.0
+offset_bottom = 587.0
+theme = ExtResource("2_plxl1")
+text = "Exit
+"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

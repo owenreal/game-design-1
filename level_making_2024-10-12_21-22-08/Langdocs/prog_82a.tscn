@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://besp52kwu4p1o"]
+
+[ext_resource type="Script" path="res://Langdocs/prog_82a.gd" id="1_1i2ut"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_8oim2"]
+
+[node name="Prog82a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1i2ut")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 4.0
+offset_right = 390.0
+offset_bottom = 99.0
+theme = ExtResource("2_8oim2")
+text = "Speed Limit:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 130.0
+offset_right = 389.0
+offset_bottom = 225.0
+theme = ExtResource("2_8oim2")
+text = "Vehicle Speed:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 333.0
+offset_right = 381.0
+offset_bottom = 428.0
+theme = ExtResource("2_8oim2")
+text = "Fine:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lblFine" type="Label" parent="."]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 336.0
+offset_right = 692.0
+offset_bottom = 431.0
+theme = ExtResource("2_8oim2")
+text = "$"
+vertical_alignment = 1
+
+[node name="txtLimit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 24.0
+offset_right = 713.0
+offset_bottom = 89.0
+
+[node name="txtSpeed" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 154.0
+offset_right = 715.0
+offset_bottom = 219.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 485.0
+offset_right = 276.0
+offset_bottom = 612.0
+theme = ExtResource("2_8oim2")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 482.0
+offset_right = 658.0
+offset_bottom = 609.0
+theme = ExtResource("2_8oim2")
+text = "Clear
+"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 477.0
+offset_right = 1044.0
+offset_bottom = 604.0
+theme = ExtResource("2_8oim2")
+text = "Exit
+"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

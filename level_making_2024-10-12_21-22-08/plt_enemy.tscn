@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://fumn3dggrw3o"]
+
+[ext_resource type="Texture2D" uid="uid://w3ie1nmw0ay6" path="res://icon.svg" id="1_7lggd"]
+[ext_resource type="Script" path="res://plt_enemy.gd" id="1_iygqc"]
+[ext_resource type="Texture2D" uid="uid://dwxnujaajdc2i" path="res://Assets/Sprites/characters.png" id="3_jyh1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk0g7"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0rqj"]
+atlas = ExtResource("3_jyh1u")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni5av"]
+atlas = ExtResource("3_jyh1u")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykp6x"]
+atlas = ExtResource("3_jyh1u")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1aca"]
+atlas = ExtResource("3_jyh1u")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbmgh"]
+atlas = ExtResource("3_jyh1u")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dalrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0rqj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni5av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykp6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1aca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbmgh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="plt_enemy" type="RigidBody2D" groups=["enemies"]]
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_iygqc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yk0g7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.317647, 0.2, 1)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("1_7lggd")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.57952e-06, -11.5)
+scale = Vector2(1.125, 1.28125)
+sprite_frames = SubResource("SpriteFrames_dalrj")
+animation = &"walk"
+frame = 3
+frame_progress = 0.933558
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

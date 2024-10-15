@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://k1xtwpbpstq7"]
+
+[ext_resource type="Script" path="res://lp_4_4.gd" id="1_cndjc"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_yfh8f"]
+
+[node name="LP4-4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cndjc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 89.0
+offset_right = 616.0
+offset_bottom = 173.0
+theme = ExtResource("2_yfh8f")
+text = "Enter car model number: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lblstat" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 189.0
+offset_right = 598.0
+offset_bottom = 273.0
+theme = ExtResource("2_yfh8f")
+text = "Car status:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="txtModel" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 103.0
+offset_right = 1060.0
+offset_bottom = 170.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 500.0
+offset_right = 263.0
+offset_bottom = 612.0
+theme = ExtResource("2_yfh8f")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 491.0
+offset_right = 680.0
+offset_bottom = 603.0
+theme = ExtResource("2_yfh8f")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 491.0
+offset_right = 1107.0
+offset_bottom = 603.0
+theme = ExtResource("2_yfh8f")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

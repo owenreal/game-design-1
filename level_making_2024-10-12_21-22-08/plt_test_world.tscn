@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://21j74n2fo5tp"]
+
+[ext_resource type="Script" path="res://plt_world_1.gd" id="1_hr28h"]
+[ext_resource type="PackedScene" uid="uid://m5lm7n3rt4s1" path="res://plt_player.tscn" id="2_kp7w3"]
+[ext_resource type="PackedScene" uid="uid://d01eijykwy6q5" path="res://interact.tscn" id="3_vuc01"]
+[ext_resource type="PackedScene" uid="uid://b034hi40t3504" path="res://draggable.tscn" id="4_bse4i"]
+[ext_resource type="PackedScene" uid="uid://fumn3dggrw3o" path="res://plt_enemy.tscn" id="5_m6tof"]
+[ext_resource type="PackedScene" uid="uid://ver8swyf3bfa" path="res://change_lvl.tscn" id="6_oubvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewnfa"]
+size = Vector2(219, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_egt5t"]
+
+[node name="plt_world1" type="Node2D"]
+script = ExtResource("1_hr28h")
+
+[node name="world" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
+polygon = PackedVector2Array(-4, -2, 322, -42, 675, -13, 1155, 8, 998, 39, 807, 71, 26, 226, 14, 476, 228, 472, 382, 487, 713, 475, 702, 558, 722, 473, 829, 466, 913, 466, 964, 481, 1025, 506, 1065, 311, 1148, 8, 1155, 401, 1146, 553, 1153, 641, 649, 745, 446, 730, 136, 673, -49, 568, -111, 330, -206, 234, -191, 56)
+
+[node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
+
+[node name="plt_player" parent="." instance=ExtResource("2_kp7w3")]
+position = Vector2(553, 214)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(517, 347)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(34, -26)
+shape = SubResource("RectangleShape2D_ewnfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0.499989, -0.5)
+scale = Vector2(219, 19)
+texture = SubResource("PlaceholderTexture2D_egt5t")
+
+[node name="interact" parent="." instance=ExtResource("3_vuc01")]
+position = Vector2(1034, 121)
+
+[node name="draggable" parent="." instance=ExtResource("4_bse4i")]
+position = Vector2(74, 426)
+
+[node name="plt_enemy" parent="." instance=ExtResource("5_m6tof")]
+position = Vector2(406, 462)
+
+[node name="change_lvl" parent="." instance=ExtResource("6_oubvo")]
+position = Vector2(871, 408)
+next_level = "plt_tutorial"

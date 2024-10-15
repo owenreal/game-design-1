@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://drx48wgfuqyep"]
+
+[ext_resource type="Script" path="res://prog_122c.gd" id="1_8hog1"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_l28ux"]
+
+[node name="Prog122c" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hog1")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 131.0
+offset_right = 237.0
+offset_bottom = 496.0
+theme = ExtResource("2_l28ux")
+
+[node name="ItemList2" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 129.0
+offset_right = 511.0
+offset_bottom = 497.0
+theme = ExtResource("2_l28ux")
+
+[node name="ItemList3" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 132.0
+offset_right = 789.0
+offset_bottom = 505.0
+theme = ExtResource("2_l28ux")
+
+[node name="ItemList4" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 911.0
+offset_top = 138.0
+offset_right = 1059.0
+offset_bottom = 511.0
+theme = ExtResource("2_l28ux")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 22.0
+offset_right = 730.0
+offset_bottom = 89.0
+theme = ExtResource("2_l28ux")
+text = "Function Lists"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 519.0
+offset_right = 337.0
+offset_bottom = 626.0
+theme = ExtResource("2_l28ux")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 519.0
+offset_right = 692.0
+offset_bottom = 626.0
+theme = ExtResource("2_l28ux")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 519.0
+offset_right = 1067.0
+offset_bottom = 626.0
+theme = ExtResource("2_l28ux")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

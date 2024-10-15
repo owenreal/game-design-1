@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://duugp3e1jj2a6"]
+
+[ext_resource type="Script" path="res://lp_4_2.gd" id="1_rvr3d"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_32lr8"]
+
+[node name="LP4 2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvr3d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 42.0
+offset_right = 517.0
+offset_bottom = 337.0
+theme = ExtResource("2_32lr8")
+text = "Package Weight in Kg:
+Package Length in cm:
+Package Width in cm:
+Package Height in cm:
+"
+
+[node name="lblResult" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 370.0
+offset_right = 539.0
+offset_bottom = 437.0
+theme = ExtResource("2_32lr8")
+text = "Result:"
+vertical_alignment = 1
+
+[node name="txtKg" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 48.0
+offset_right = 1101.0
+offset_bottom = 113.0
+
+[node name="txtLen" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 128.0
+offset_right = 1103.0
+offset_bottom = 193.0
+
+[node name="txtWid" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 202.0
+offset_right = 1103.0
+offset_bottom = 267.0
+
+[node name="txtHeight" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 276.0
+offset_right = 1101.0
+offset_bottom = 341.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 492.0
+offset_right = 254.0
+offset_bottom = 626.0
+theme = ExtResource("2_32lr8")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 488.0
+offset_right = 690.0
+offset_bottom = 622.0
+theme = ExtResource("2_32lr8")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 490.0
+offset_right = 1120.0
+offset_bottom = 624.0
+theme = ExtResource("2_32lr8")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

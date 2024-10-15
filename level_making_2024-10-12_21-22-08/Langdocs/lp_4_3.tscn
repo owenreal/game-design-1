@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0xkj02igg8i"]
+
+[ext_resource type="Script" path="res://lp_4_3.gd" id="1_flkp1"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_jbg08"]
+
+[node name="LP4 3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flkp1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 46.0
+offset_right = 736.0
+offset_bottom = 138.0
+theme = ExtResource("2_jbg08")
+text = "Enter number of eggs ordered:"
+
+[node name="lblDozen" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 179.0
+offset_right = 702.0
+offset_bottom = 271.0
+theme = ExtResource("2_jbg08")
+text = "Cost per dozen:"
+vertical_alignment = 1
+
+[node name="lblCost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 257.0
+offset_right = 700.0
+offset_bottom = 349.0
+theme = ExtResource("2_jbg08")
+text = "Total Cost:"
+vertical_alignment = 1
+
+[node name="txtEggs" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 34.0
+offset_right = 1131.0
+offset_bottom = 114.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 469.0
+offset_right = 281.0
+offset_bottom = 598.0
+theme = ExtResource("2_jbg08")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 470.0
+offset_right = 676.0
+offset_bottom = 599.0
+theme = ExtResource("2_jbg08")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 469.0
+offset_right = 1087.0
+offset_bottom = 598.0
+theme = ExtResource("2_jbg08")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

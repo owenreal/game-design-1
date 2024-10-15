@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b034hi40t3504"]
+
+[ext_resource type="Script" path="res://draggable.gd" id="1_mqqwj"]
+[ext_resource type="Texture2D" uid="uid://cec4p6xsdb2pp" path="res://Assets/Sprites/sheet.png" id="2_33lr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6evol"]
+size = Vector2(56, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54802"]
+atlas = ExtResource("2_33lr5")
+region = Rect2(256, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8g3mr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54802")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="draggable" type="RigidBody2D"]
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_mqqwj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15.5)
+shape = SubResource("RectangleShape2D_6evol")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(4.625, 4.125)
+sprite_frames = SubResource("SpriteFrames_8g3mr")
+
+[node name="Button" type="Button" parent="AnimatedSprite2D"]
+modulate = Color(0.666667, 0.490196, 0.72549, 0)
+offset_left = -7.0
+offset_top = -2.0
+offset_right = 6.0
+offset_bottom = 9.0
+focus_mode = 0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="button_down" from="AnimatedSprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="AnimatedSprite2D/Button" to="." method="_on_button_button_up"]

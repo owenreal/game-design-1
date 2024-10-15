@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8e81e5chgvjm"]
+
+[ext_resource type="Script" path="res://lp_4_1.gd" id="1_e7s5t"]
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="2_vveml"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6327"]
+font_size = 30
+
+[node name="LP 4-1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e7s5t")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 558.0
+offset_bottom = 107.0
+text = "Enter number of copies to be printed"
+label_settings = SubResource("LabelSettings_x6327")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblOut" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 115.0
+offset_right = 1140.0
+offset_bottom = 481.0
+text = "Price per copy:
+Total cost:"
+label_settings = SubResource("LabelSettings_x6327")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 22.0
+offset_right = 1073.0
+offset_bottom = 99.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 506.0
+offset_right = 228.0
+offset_bottom = 628.0
+theme = ExtResource("2_vveml")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 504.0
+offset_right = 690.0
+offset_bottom = 626.0
+theme = ExtResource("2_vveml")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 908.0
+offset_top = 506.0
+offset_right = 1130.0
+offset_bottom = 628.0
+theme = ExtResource("2_vveml")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
