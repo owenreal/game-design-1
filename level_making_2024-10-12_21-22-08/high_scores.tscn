@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdk6issyg6ptn"]
+
+[ext_resource type="Theme" uid="uid://1r65p8sxjs8f" path="res://big_font.tres" id="1_ujemf"]
+[ext_resource type="Script" path="res://high_scores.gd" id="1_xb1d2"]
+
+[node name="HighScores" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xb1d2")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 444.0
+theme = ExtResource("1_ujemf")
+
+[node name="txtAdd" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 460.0
+offset_right = 296.0
+offset_bottom = 535.0
+theme = ExtResource("1_ujemf")
+
+[node name="txtRemove" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 457.0
+offset_right = 1145.0
+offset_bottom = 532.0
+theme = ExtResource("1_ujemf")
+
+[node name="btnAdd" type="Button" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 558.0
+offset_right = 255.0
+offset_bottom = 630.0
+theme = ExtResource("1_ujemf")
+text = "Add Score"
+
+[node name="btnRemove" type="Button" parent="."]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 555.0
+offset_right = 1141.0
+offset_bottom = 630.0
+theme = ExtResource("1_ujemf")
+theme_override_font_sizes/font_size = 30
+text = "Remove Score #"
+
+[connection signal="pressed" from="btnAdd" to="." method="_on_btn_add_pressed"]
+[connection signal="pressed" from="btnRemove" to="." method="_on_btn_remove_pressed"]
