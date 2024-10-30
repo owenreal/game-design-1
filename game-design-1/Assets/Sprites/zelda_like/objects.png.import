@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cec4p6xsdb2pp"
-path="res://.godot/imported/sheet.png-33aafe463c10df96e75eb8a185d0aae2.ctex"
+uid="uid://bxuh7auahixol"
+path="res://.godot/imported/objects.png-cc0f419278514008cf58c9a3c3f17b8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/sheet.png"
-dest_files=["res://.godot/imported/sheet.png-33aafe463c10df96e75eb8a185d0aae2.ctex"]
+source_file="res://Assets/Sprites/zelda_like/objects.png"
+dest_files=["res://.godot/imported/objects.png-cc0f419278514008cf58c9a3c3f17b8b.ctex"]
 
 [params]
 

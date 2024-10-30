@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmpw1dm87gw2d"
-path="res://.godot/imported/phase-2.png-94417c1670d2c949251440bf8558c6db.ctex"
+uid="uid://cqf5whwdfwsit"
+path="res://.godot/imported/character.png-296a9b8e7fc285377244e4d0ec12e22a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/phase-2.png"
-dest_files=["res://.godot/imported/phase-2.png-94417c1670d2c949251440bf8558c6db.ctex"]
+source_file="res://Assets/Sprites/zelda_like/character.png"
+dest_files=["res://.godot/imported/character.png-296a9b8e7fc285377244e4d0ec12e22a.ctex"]
 
 [params]
 

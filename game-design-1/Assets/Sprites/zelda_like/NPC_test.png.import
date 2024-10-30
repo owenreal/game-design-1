@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhn5v41ikcc0p"
-path="res://.godot/imported/swoosh.png-012ed98f07e01929fd4c3ee3af76e723.ctex"
+uid="uid://d2ox2q5gcmk4i"
+path="res://.godot/imported/NPC_test.png-ad6955eba760fcb1df0465fe1846086a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/swoosh.png"
-dest_files=["res://.godot/imported/swoosh.png-012ed98f07e01929fd4c3ee3af76e723.ctex"]
+source_file="res://Assets/Sprites/zelda_like/NPC_test.png"
+dest_files=["res://.godot/imported/NPC_test.png-ad6955eba760fcb1df0465fe1846086a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwxnujaajdc2i"
-path="res://.godot/imported/characters.png-920fda93b3e029fd3b4fe5d74dee6338.ctex"
+uid="uid://bc8trnif8bepe"
+path="res://.godot/imported/Overworld.png-8f5211ee71c6809c6491112df60dca2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/characters.png"
-dest_files=["res://.godot/imported/characters.png-920fda93b3e029fd3b4fe5d74dee6338.ctex"]
+source_file="res://Assets/Sprites/zelda_like/Overworld.png"
+dest_files=["res://.godot/imported/Overworld.png-8f5211ee71c6809c6491112df60dca2f.ctex"]
 
 [params]
 
