@@ -19,3 +19,27 @@ texture = ExtResource("1_3sikd")
 hframes = 33
 vframes = 20
 frame = 8
+
+[node name="PlayerMoney" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 288.0
+grow_vertical = 0
+
+[node name="Coins" type="Sprite2D" parent="PlayerMoney"]
+position = Vector2(33, 46)
+scale = Vector2(3.46667, 3.375)
+texture = ExtResource("1_3sikd")
+hframes = 34
+vframes = 20
+frame = 136
+
+[node name="coinslbl" type="Label" parent="PlayerMoney"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 31.0
+offset_right = 138.0
+offset_bottom = 58.0
