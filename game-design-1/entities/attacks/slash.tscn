@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://rly4a1mys21y"]
+
+[ext_resource type="Script" path="res://entities/attacks/slash.gd" id="1_6uffs"]
+[ext_resource type="Texture2D" uid="uid://di6s5ceqy8v1i" path="res://Assets/Sprites/Slash.png" id="2_oouyp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugice"]
+radius = 8.5
+
+[node name="slash" type="Area2D" groups=["Slash"]]
+script = ExtResource("1_6uffs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oouyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ugice")
