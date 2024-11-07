@@ -28,8 +28,6 @@ func _process(_delta: float) -> void:
 	var full_hearts = floor(p_health / 20)
 	var remainder = int(p_health) % 20
 	
-	var p_money = player.data.money
-	
 	for heart in hearts.get_children():
 		var index = heart.get_index()
 		var x = (index % HEART_ROW_SIZE) * HEART_OFFSET
