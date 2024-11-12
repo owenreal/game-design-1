@@ -16,7 +16,7 @@ var inertia = Vector2()
 var look_direction = Vector2.DOWN  # Vector2(0,1)
 var attack_direction = look_direction
 var animation_lock = 0.0 # lock player in attack anim
-var damage_lock = 0.0
+var damage_lock = 0.5
 var charge_time = 2.5
 var charge_start_time = 0.0
 

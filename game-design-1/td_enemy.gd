@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 60.0
 var MAX_HEALTH = 30.0
 var HEALTH = MAX_HEALTH
-var DAMAGE = 10.0
+var DAMAGE = 5.0
 var AI_STATE = STATES.IDLE
 
 enum STATES { IDLE=0, UP, DOWN, LEFT, RIGHT,
@@ -40,7 +40,7 @@ var ai_timer_max = 0.5
 var ai_timer = ai_timer_max - randi() % 5
 var damage_lock = 0.0
 var animation_lock = 0.0
-var knockback = 128.0
+var knockback = 200.0
 var vision_distance = 50.0
 var money_value = 5.0
 
@@ -52,13 +52,24 @@ signal recovered
 @onready var anim_player = $AnimatedSprite2D
 
 func turn_toward_player_location(location: Vector2):
-	# placeholder
-	pass
+	# set state to move toward player
+	var dir_to_player = (location - self.global_position).normalized()
+	velocity = dir_to_player * (SPEED  * 1.3)
+	# determine closest cardinal direction for anim
+	var closest_angle = INF
+	var closest_state = STATES.IDLE
+	for i in range(1, 5):
+		var state_dir = state_directions[i]
+		var angle_dif = abs(state_dir.angle_to(dir_to_player))
+		if angle_dif < closest_angle:
+			closest_angle = angle_dif
+			closest_state = STATES.values()[i]
+	AI_STATE = closest_state
 
 func take_damage(dmg, attacker=null):
 	# not done
 	if damage_lock == 0.0:
-		# AI_STATE = STATES.DAMAGED
+		AI_STATE = STATES.DAMAGED
 		HEALTH -= dmg
 		damage_lock = 0.2
 		animation_lock = 0.2
@@ -69,9 +80,9 @@ func take_damage(dmg, attacker=null):
 			queue_free()
 		else:
 			if attacker != null:
-				# await recovered
-				turn_toward_player_location(attacker.global_position)
-	pass
+				var loc = attacker.global_position
+				await recovered
+				turn_toward_player_location(loc)
 
 func _physics_process(delta: float) -> void:
 	animation_lock = max(animation_lock - delta, 0.0)
@@ -84,8 +95,24 @@ func _physics_process(delta: float) -> void:
 		rcR.target_position = \
 			raydir.rotated(deg_to_rad(+45)).normalized() * vision_distance
 	if animation_lock == 0.0:
-		# recover from damage
-		# damage player
+		if AI_STATE == STATES.DAMAGED:
+			# reset shader
+			AI_STATE = STATES.IDLE
+			recovered.emit()
+		for player in get_tree().get_nodes_in_group("Player"):
+			if $AttackBox.overlaps_body(player):
+				if player.damage_lock == 0.0:
+					var inert = player.global_position-self.global_position
+					player.inertia = (inert.normalized() * Vector2(1,1)) * knockback
+					player.take_damage(DAMAGE)
+				else:
+					continue
+			if player.data.state != player.STATES.DEAD:
+				if (rcM.is_colliding() and rcM.get_collider() == player) or \
+				(rcL.is_colliding() and rcL.get_collider() == player) or \
+				(rcR.is_colliding() and rcR.get_collider() == player):
+					turn_toward_player_location(player.global_position)
+			pass
 		
 		ai_timer = clamp(ai_timer-delta, 0.0, ai_timer_max)
 		if ai_timer == 0.0:

@@ -364,8 +364,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5gs8"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wckcl"]
+radius = 8.0
 height = 22.0
 
 [node name="td_player" type="CharacterBody2D" groups=["Player"]]
@@ -385,7 +385,7 @@ offset_right = 1.0
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_n5gs8")
+shape = SubResource("CapsuleShape2D_wckcl")
 
 [node name="PlayerHUD" parent="." instance=ExtResource("4_ubiuk")]
 visible = false

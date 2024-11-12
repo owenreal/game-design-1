@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://td_enemy.gd" id="1_uypvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7n0t"]
-size = Vector2(14, 24)
+size = Vector2(14, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7tu4"]
-size = Vector2(22, 26)
+size = Vector2(18, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_maje1"]
 atlas = ExtResource("1_svpmc")
@@ -160,12 +160,13 @@ animations = [{
 script = ExtResource("1_uypvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_x7n0t")
 
 [node name="AttackBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_s7tu4")
 debug_color = Color(0.897855, 0.266016, 0.439609, 0.42)
 
