@@ -7,6 +7,10 @@ var flicker_interval = 0.1
 var current_time = 0.0
 var time_to_despawn = 13.0
 
+@onready var aud_player = $AudioStreamPlayer2D
+@export var sound = ""
+var soundF = "res://.music." + self.sound + ".wav"
+
 func remove():
 	value = 0
 	queue_free()
@@ -14,6 +18,7 @@ func remove():
 func interact(player):
 	# implement by child class
 	# player.pickup_item(value)
+	# play sound
 	remove()
 
 func _init(default_value: int = 1):

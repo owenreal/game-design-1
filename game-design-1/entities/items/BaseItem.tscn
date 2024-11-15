@@ -55,3 +55,5 @@ frame_progress = 0.303427
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_n7w1o")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

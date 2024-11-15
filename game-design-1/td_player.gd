@@ -3,6 +3,10 @@ extends CharacterBody2D
 const SPEED = 100.0
 const MAXIMUM_OBTAINABLE_HEALTH = 400.0
 enum  STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
+# add death sound, damage sound, coin/heart pickup, charge attack ready
+# aud_player.stream = whatever
+# aud_player.play()
+
 
 @export var data = {
 	"max_health": 60.0,  # 20hp per heart, 5 per fraction
@@ -21,6 +25,13 @@ var charge_time = 2.5
 var charge_start_time = 0.0
 
 var slash_scene = preload("res://entities/attacks/slash.tscn")
+var damage_shader = preload("res://Assets/shaders/take_damage.tres")
+var attack_sound = preload("res://Assets/sounds/slash.wav")
+var chargeReady_sound = preload("res://Assets/sounds/chargeReady.wav")
+var charge_sound = preload("res://Assets/sounds/chargeSlash.wav")
+
+@onready var p_HUD = get_tree().get_first_node_in_group("HUD")
+@onready var aud_player = $AudioStreamPlayer2D
 
 func get_direction_name():
 	return ["right", "down", "left", "up"][
@@ -38,6 +49,8 @@ func attack():
 	slash.position = attack_direction * 20.0
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
+	aud_player.stream = attack_sound
+	aud_player.play()
 	animation_lock = 0.2
 
 func charged_attack():
@@ -59,8 +72,6 @@ func charged_attack():
 	await $AnimatedSprite2D.animation_finished
 	data.state = STATES.IDLE
 
-@onready var p_HUD = get_tree().get_first_node_in_group("HUD")
-
 func _ready() -> void:
 	p_HUD.show()
 
@@ -80,7 +91,8 @@ func take_damage(dmg):
 		data.state = STATES.DAMAGED
 		damage_lock = 0.5
 		animation_lock = dmg * 0.005
-		# damage shader here
+		$AnimatedSprite2D.material = damage_shader.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health > 0:
 			# play damage sound
 			pass
@@ -96,6 +108,9 @@ func _physics_process(delta: float) -> void:
 	damage_lock = max(damage_lock-delta, 0.0)
 	
 	if animation_lock == 0.0 and data.state != STATES.DEAD:
+		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
+			$AnimatedSprite2D.material = null
+		
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
 	
@@ -124,6 +139,8 @@ func _physics_process(delta: float) -> void:
 		charge_start_time += delta
 		if Input.is_action_just_released("ui_accept"):
 			if charge_start_time >= charge_time and data.state == STATES.CHARGING:
+				aud_player.stream = charge_sound
+				aud_player.play()
 				charged_attack()
 			else:
 				data.state = STATES.IDLE
