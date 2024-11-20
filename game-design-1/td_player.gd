@@ -135,6 +135,13 @@ func _physics_process(delta: float) -> void:
 			attack()
 			charge_start_time = 0
 			data.state = STATES.CHARGING
+			
+		if Input.is_action_just_pressed("ui_select"):
+			for entity in get_tree().get_nodes_in_group("Interactable"):
+				if entity.in_range(self):
+					entity.interact(self)
+					data.state = STATES.IDLE
+					return
 		
 		charge_start_time += delta
 		if Input.is_action_just_released("ui_accept"):
