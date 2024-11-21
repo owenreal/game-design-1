@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 const MAXIMUM_OBTAINABLE_HEALTH = 400.0
 enum  STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
-# add death sound, damage sound, coin/heart pickup, charge attack ready
+# add death sound, damage sound,
 # aud_player.stream = whatever
 # aud_player.play()
 
@@ -21,14 +21,18 @@ var look_direction = Vector2.DOWN  # Vector2(0,1)
 var attack_direction = look_direction
 var animation_lock = 0.0 # lock player in attack anim
 var damage_lock = 0.5
-var charge_time = 2.5
+var charge_time = 2.0
 var charge_start_time = 0.0
+var charge_ready = false
 
 var slash_scene = preload("res://entities/attacks/slash.tscn")
 var damage_shader = preload("res://Assets/shaders/take_damage.tres")
 var attack_sound = preload("res://Assets/sounds/slash.wav")
 var chargeReady_sound = preload("res://Assets/sounds/chargeReady.wav")
 var charge_sound = preload("res://Assets/sounds/chargeSlash.wav")
+var coin_pickup = preload("res://Assets/sounds/pickupCoin.wav")
+var heart_pickup = preload("res://Assets/sounds/pickupHeart.wav")
+var hurt_sound = preload("res://Assets/sounds/hitHurt.wav")
 
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
 @onready var aud_player = $AudioStreamPlayer2D
@@ -76,10 +80,14 @@ func _ready() -> void:
 	p_HUD.show()
 
 func pickup_health(value):
+	aud_player.stream = heart_pickup
+	aud_player.play()
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
 
 func pickup_money(value):
+	aud_player.stream = coin_pickup
+	aud_player.play()
 	data.money += value
 	$PlayerHUD/PlayerMoney/coinslbl.text = str(data.money)
 
@@ -94,7 +102,8 @@ func take_damage(dmg):
 		$AnimatedSprite2D.material = damage_shader.duplicate()
 		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health > 0:
-			# play damage sound
+			aud_player.stream = hurt_sound
+			aud_player.play()
 			pass
 		else:
 			data.state = STATES.DEAD
@@ -133,8 +142,12 @@ func _physics_process(delta: float) -> void:
 	if data.state != STATES.DEAD:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
-			charge_start_time = 0
+			charge_start_time = 0.0
 			data.state = STATES.CHARGING
+		if charge_start_time >= charge_time and data.state == STATES.CHARGING and charge_ready == false:
+			charge_ready = true
+			aud_player.stream = chargeReady_sound
+			aud_player.play()
 			
 		if Input.is_action_just_pressed("ui_select"):
 			for entity in get_tree().get_nodes_in_group("Interactable"):
@@ -145,10 +158,11 @@ func _physics_process(delta: float) -> void:
 		
 		charge_start_time += delta
 		if Input.is_action_just_released("ui_accept"):
-			if charge_start_time >= charge_time and data.state == STATES.CHARGING:
+			if charge_start_time >= charge_time and data.state == STATES.CHARGING and charge_ready == true:
 				aud_player.stream = charge_sound
 				aud_player.play()
 				charged_attack()
+				charge_ready = false
 			else:
 				data.state = STATES.IDLE
 			

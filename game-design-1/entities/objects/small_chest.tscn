@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxuh7auahixol" path="res://Assets/Sprites/zelda_like/objects.png" id="1_m7y58"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2oefl"]
-radius = 14.0
+radius = 21.0238
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ojpr"]
 size = Vector2(14, 14)

@@ -35,7 +35,7 @@ func bounce_towards_player(item, player):
 	await tween.finished
 	
 func drop_item(item_name, value, player):
-	var scene_name = "res://assets/entities/items/%s.tscn" % regex.sub(item_name, "")
+	var scene_name = "res://entities/items/%s.tscn" % regex.sub(item_name, "")
 	var item_scene = load(scene_name)
 	var item = item_scene.instantiate()
 	item.bounce = false

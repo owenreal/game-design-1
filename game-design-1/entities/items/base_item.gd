@@ -39,6 +39,11 @@ func _ready():
 		var bounce_height = Vector2(0, -3)
 		tween.set_trans(Tween.TRANS_BOUNCE)
 		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_property($AnimatedSprite2D, "global_position", self.global_position + bounce_height, 0.1)
+		tween.tween_property($AnimatedSprite2D, "global_position", \
+						self.global_position + bounce_height, 0.1)
+		tween.play()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property($AnimatedSprite2D, "global_position", \
+						self.global_position, 0.1)
 		
 	
