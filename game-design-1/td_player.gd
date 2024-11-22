@@ -3,7 +3,6 @@ extends CharacterBody2D
 const SPEED = 100.0
 const MAXIMUM_OBTAINABLE_HEALTH = 400.0
 enum  STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
-# add death sound, damage sound,
 # aud_player.stream = whatever
 # aud_player.play()
 
@@ -21,7 +20,7 @@ var look_direction = Vector2.DOWN  # Vector2(0,1)
 var attack_direction = look_direction
 var animation_lock = 0.0 # lock player in attack anim
 var damage_lock = 0.5
-var charge_time = 2.0
+var charge_time = 1.0
 var charge_start_time = 0.0
 var charge_ready = false
 
@@ -33,6 +32,7 @@ var charge_sound = preload("res://Assets/sounds/chargeSlash.wav")
 var coin_pickup = preload("res://Assets/sounds/pickupCoin.wav")
 var heart_pickup = preload("res://Assets/sounds/pickupHeart.wav")
 var hurt_sound = preload("res://Assets/sounds/hitHurt.wav")
+var death_sound = preload("res://Assets/sounds/death_sound.wav")
 
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
 @onready var aud_player = $AudioStreamPlayer2D
@@ -81,20 +81,24 @@ func _ready() -> void:
 
 func pickup_health(value):
 	aud_player.stream = heart_pickup
+	aud_player.volume_db += 20
 	aud_player.play()
+	aud_player.volume_db -= 20
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
 
 func pickup_money(value):
 	aud_player.stream = coin_pickup
+	aud_player.volume_db -= 20
 	aud_player.play()
+	aud_player.volume_db += 20
 	data.money += value
 	$PlayerHUD/PlayerMoney/coinslbl.text = str(data.money)
 
 signal health_depleted
 
 func take_damage(dmg):
-	if damage_lock == 0.0:
+	if damage_lock == 0.0 and data.state != STATES.DEAD:
 		data.health -= dmg
 		data.state = STATES.DAMAGED
 		damage_lock = 0.5
@@ -107,7 +111,8 @@ func take_damage(dmg):
 			pass
 		else:
 			data.state = STATES.DEAD
-			# play death anim and sound
+			aud_player.stream = death_sound
+			aud_player.play()
 			await get_tree().create_timer(0.5).timeout
 			health_depleted.emit()
 	pass
