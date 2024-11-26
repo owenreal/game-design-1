@@ -81,11 +81,15 @@ func _ready() -> void:
 
 func pickup_health(value):
 	aud_player.stream = heart_pickup
-	aud_player.volume_db += 20
 	aud_player.play()
-	aud_player.volume_db -= 20
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
+
+func pickup_container(value):
+	# aud_player.stream = container_pickup
+	# aud_player.play()
+	data.max_health += value
+	data.health = data.max_health
 
 func pickup_money(value):
 	aud_player.stream = coin_pickup

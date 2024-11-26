@@ -3,10 +3,10 @@ class_name BaseItem extends Node2D
 var value
 var bounce = true
 var flicker_state = false
-var flicker_start_time = 10.0
+@export var flicker_start_time = 10.0
 var flicker_interval = 0.1
 var current_time = 0.0
-var time_to_despawn = 13.0
+@export var time_to_despawn = 13.0
 
 func remove():
 	value = 0

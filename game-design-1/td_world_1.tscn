@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c60oanhlkokeh"]
+[gd_scene load_steps=10 format=4 uid="uid://c60oanhlkokeh"]
 
 [ext_resource type="TileSet" uid="uid://d1g4hp8sm65go" path="res://Assets/tilesets/td_world_1.tres" id="1_sxt6e"]
 [ext_resource type="PackedScene" uid="uid://bv4ekiiyw3kdo" path="res://td_player.tscn" id="2_boee2"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c1i82inufo4qd" path="res://Assets/sounds/music/overworld.mp3" id="6_rwd67"]
 [ext_resource type="PackedScene" uid="uid://ver8swyf3bfa" path="res://change_lvl.tscn" id="7_glabp"]
 [ext_resource type="PackedScene" uid="uid://cg1tiwvxijrl1" path="res://entities/objects/small_chest.tscn" id="8_1q74v"]
+[ext_resource type="PackedScene" uid="uid://4412rte2vb1r" path="res://entities/items/heart_container.tscn" id="9_8267s"]
 
 [node name="td_world1" type="Node2D"]
 
@@ -77,5 +78,8 @@ contents = {
 "mini_coin": 10,
 "mini_heart": 5
 }
+
+[node name="heart_container" parent="." instance=ExtResource("9_8267s")]
+position = Vector2(2, -79)
 
 [editable path="change_lvl"]

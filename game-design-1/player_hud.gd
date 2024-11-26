@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 	var p_health = player.data.health
 	var full_hearts = floor(p_health / 20)
 	var remainder = int(p_health) % 20
+	draw_hearts()
 	
 	for heart in hearts.get_children():
 		var index = heart.get_index()
