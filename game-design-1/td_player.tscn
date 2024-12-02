@@ -1,9 +1,25 @@
-[gd_scene load_steps=50 format=3 uid="uid://bv4ekiiyw3kdo"]
+[gd_scene load_steps=54 format=3 uid="uid://bv4ekiiyw3kdo"]
 
 [ext_resource type="Script" path="res://td_player.gd" id="1_obom6"]
 [ext_resource type="Texture2D" uid="uid://cqf5whwdfwsit" path="res://Assets/Sprites/zelda_like/character.png" id="1_t6sbb"]
 [ext_resource type="PackedScene" uid="uid://b50kdee25ae2e" path="res://pause_menu.tscn" id="3_uw7wc"]
 [ext_resource type="PackedScene" uid="uid://cy6b1uo1jvoyq" path="res://player_hud.tscn" id="4_ubiuk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcnlo"]
+atlas = ExtResource("1_t6sbb")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur8s7"]
+atlas = ExtResource("1_t6sbb")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xss3y"]
+atlas = ExtResource("1_t6sbb")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whskt"]
+atlas = ExtResource("1_t6sbb")
+region = Rect2(0, 96, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3okp"]
 atlas = ExtResource("1_t6sbb")
@@ -179,6 +195,23 @@ region = Rect2(48, 64, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_egmfi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcnlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur8s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xss3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whskt")
+}],
+"loop": true,
+"name": &"death",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s3okp")
@@ -373,7 +406,7 @@ script = ExtResource("1_obom6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_egmfi")
-animation = &"idle_down"
+animation = &"death"
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -391,3 +424,4 @@ shape = SubResource("CapsuleShape2D_wckcl")
 visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 3

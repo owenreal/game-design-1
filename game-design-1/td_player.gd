@@ -33,6 +33,7 @@ var coin_pickup = preload("res://Assets/sounds/pickupCoin.wav")
 var heart_pickup = preload("res://Assets/sounds/pickupHeart.wav")
 var hurt_sound = preload("res://Assets/sounds/hitHurt.wav")
 var death_sound = preload("res://Assets/sounds/death_sound.wav")
+var container_pickup = preload("res://Assets/sounds/maxUp.wav")
 
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
 @onready var aud_player = $AudioStreamPlayer2D
@@ -86,8 +87,8 @@ func pickup_health(value):
 	data.health = clamp(data.health, 0, data.max_health)
 
 func pickup_container(value):
-	# aud_player.stream = container_pickup
-	# aud_player.play()
+	aud_player.stream = container_pickup
+	aud_player.play()
 	data.max_health += value
 	data.health = data.max_health
 
@@ -175,9 +176,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				data.state = STATES.IDLE
 			
-	if Input.is_action_just_pressed("ui_cancel"):
-		$Camera2D/pause_menu.show()
-		get_tree().paused = true
+		if Input.is_action_just_pressed("ui_cancel"):
+			$Camera2D/pause_menu.show()
+			get_tree().paused = true
+	elif data.state == STATES.DEAD:
+		$AnimatedSprite2D.flip_v = true
+		$AnimatedSprite2D.play("death")
 	pass
 
 func update_animation(direction):
