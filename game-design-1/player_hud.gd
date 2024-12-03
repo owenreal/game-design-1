@@ -14,6 +14,9 @@ func create_heart():
 	n_heart.frame = 8
 	hearts.add_child(n_heart)
 
+func set_money():
+	$PlayerMoney/coinslbl.text = player.data.money
+
 func draw_hearts():
 	for heart in hearts.get_children():
 		hearts.remove_child(heart)
@@ -22,6 +25,7 @@ func draw_hearts():
 
 func _ready() -> void:
 	draw_hearts()
+	#set_money()
 
 func _process(_delta: float) -> void:
 	var p_health = player.data.health

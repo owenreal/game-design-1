@@ -38,6 +38,16 @@ var container_pickup = preload("res://Assets/sounds/maxUp.wav")
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
 @onready var aud_player = $AudioStreamPlayer2D
 
+func save_to_file(data):
+	var file = FileAccess.open("res://game_data.player_data.txt", FileAccess.WRITE)
+	file.store_string(str(data.money))
+
+func load_from_file():
+	var file = FileAccess.open("res://game_data.player_data.txt", FileAccess.READ)
+	var Mdata = file.get_as_text()
+	data.money = float(Mdata)
+	#return data
+
 func get_direction_name():
 	return ["right", "down", "left", "up"][
 		int(round(look_direction.angle() * 2 / PI)) % 4
@@ -78,6 +88,7 @@ func charged_attack():
 	data.state = STATES.IDLE
 
 func _ready() -> void:
+	load_from_file()
 	p_HUD.show()
 
 func pickup_health(value):
@@ -125,6 +136,7 @@ func take_damage(dmg):
 func _physics_process(delta: float) -> void:
 	animation_lock = max(animation_lock-delta, 0.0)
 	damage_lock = max(damage_lock-delta, 0.0)
+	
 	
 	if animation_lock == 0.0 and data.state != STATES.DEAD:
 		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
@@ -177,8 +189,10 @@ func _physics_process(delta: float) -> void:
 				data.state = STATES.IDLE
 			
 		if Input.is_action_just_pressed("ui_cancel"):
-			$Camera2D/pause_menu.show()
-			get_tree().paused = true
+			#$Camera2D/pause_menu.show()
+			#get_tree().paused = true
+			save_to_file(data)
+			#load_from_file()
 	elif data.state == STATES.DEAD:
 		$AnimatedSprite2D.flip_v = true
 		$AnimatedSprite2D.play("death")
