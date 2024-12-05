@@ -6,7 +6,6 @@ enum  STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
 # aud_player.stream = whatever
 # aud_player.play()
 
-
 @export var data = {
 	"max_health": 60.0,  # 20hp per heart, 5 per fraction
 	"health": 40.0,      # Min 60 Max 400
@@ -88,7 +87,7 @@ func charged_attack():
 	data.state = STATES.IDLE
 
 func _ready() -> void:
-	load_from_file()
+	#load_from_file()
 	p_HUD.show()
 
 func pickup_health(value):
@@ -189,13 +188,16 @@ func _physics_process(delta: float) -> void:
 				data.state = STATES.IDLE
 			
 		if Input.is_action_just_pressed("ui_cancel"):
-			#$Camera2D/pause_menu.show()
-			#get_tree().paused = true
-			save_to_file(data)
+			$Camera2D/pause_menu.show()
+			get_tree().paused = true
+			#save_to_file(data)
 			#load_from_file()
 	elif data.state == STATES.DEAD:
 		$AnimatedSprite2D.flip_v = true
 		$AnimatedSprite2D.play("death")
+		var death_time = get_tree().create_timer(1.0)
+		await death_time.timeout
+		$Camera2D/death_menu.show()
 	pass
 
 func update_animation(direction):

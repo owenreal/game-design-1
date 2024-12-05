@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://bv4ekiiyw3kdo"]
+[gd_scene load_steps=55 format=3 uid="uid://bv4ekiiyw3kdo"]
 
 [ext_resource type="Script" path="res://td_player.gd" id="1_obom6"]
 [ext_resource type="Texture2D" uid="uid://cqf5whwdfwsit" path="res://Assets/Sprites/zelda_like/character.png" id="1_t6sbb"]
 [ext_resource type="PackedScene" uid="uid://b50kdee25ae2e" path="res://pause_menu.tscn" id="3_uw7wc"]
+[ext_resource type="PackedScene" uid="uid://6hty1n1ex06i" path="res://death_menu.tscn" id="4_o6q6q"]
 [ext_resource type="PackedScene" uid="uid://cy6b1uo1jvoyq" path="res://player_hud.tscn" id="4_ubiuk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lcnlo"]
@@ -413,6 +414,11 @@ autoplay = "idle_down"
 zoom = Vector2(5, 5)
 
 [node name="pause_menu" parent="Camera2D" instance=ExtResource("3_uw7wc")]
+visible = false
+offset_right = 1.0
+scale = Vector2(0.2, 0.2)
+
+[node name="death_menu" parent="Camera2D" instance=ExtResource("4_o6q6q")]
 visible = false
 offset_right = 1.0
 scale = Vector2(0.2, 0.2)
